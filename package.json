@@ -1,5 +1,5 @@
 {
-  "name": "llq/formiojs",
+  "name": "llqformiojs",
   "version": "5.0.0-rc.27",
   "description": "JavaScript powered Forms with JSON Form Builder",
   "main": "lib/cjs/index.js",
