@@ -1,5 +1,6 @@
 export class Formio {
   constructor(url: string, options?: Object);
+  public Form: any;
   public base: string;
   public projectsUrl: string;
   public projectUrl: string;
