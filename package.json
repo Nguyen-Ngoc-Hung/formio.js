@@ -159,7 +159,6 @@
     "mock-local-storage": "^1.1.24",
     "natives": "^1.1.6",
     "power-assert": "^1.6.1",
-    "pre-commit": "^1.2.2",
     "pretty": "^2.0.0",
     "pygments-css": "^1.0.0",
     "raw-loader": "^4.0.2",

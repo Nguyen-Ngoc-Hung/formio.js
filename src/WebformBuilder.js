@@ -385,16 +385,16 @@ export default class WebformBuilder extends Component {
         this.attachTooltip(component.refs.editableComponent, this.t('Editable'));
 
         component.addEventListener(component.refs.editableComponent, 'click', () => {
-          console.log('Editable config')
+          console.log('Editable config');
         });
       }
 
       if (component.refs.readonlyComponent) {
         this.attachTooltip(component.refs.readonlyComponent, this.t('Readonly'));
-
+        const parent = this.getParentElement(element);
         component.addEventListener(component.refs.readonlyComponent, 'click', () => {
-          console.log('Readonly config')
-          this.readonlyComponent(component.schema, parent, component.component, component)
+          console.log('Readonly config');
+          this.readonlyComponent(component.schema, parent, component.component, component);
         });
       }
 
@@ -402,11 +402,10 @@ export default class WebformBuilder extends Component {
         this.attachTooltip(component.refs.hiddenComponent, this.t('Hidden'));
 
         component.addEventListener(component.refs.hiddenComponent, 'click', () => {
-          console.log('Hidden config')
+          console.log('Hidden config');
         });
       }
     }
-
 
     if (component.refs.copyComponent) {
       this.attachTooltip(component.refs.copyComponent, this.t('Copy'));
