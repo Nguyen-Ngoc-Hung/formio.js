@@ -31,6 +31,7 @@ export default class WebformBuilder extends Component {
     // Reset skipInit in case PDFBuilder has set it.
     options.skipInit = false;
     options.display = options.display || 'form';
+    options.permissionMode = options.permissionMode || false;
 
     super(null, options);
 
@@ -134,6 +135,7 @@ export default class WebformBuilder extends Component {
         html,
         disableBuilderActions: self?.component?.disableBuilderActions,
         childComponent: component,
+        permissionMode: options.permissionMode,
       });
     };
 
@@ -371,6 +373,40 @@ export default class WebformBuilder extends Component {
       pasteComponent: 'single',
       editJson: 'single'
     });
+
+    if (this.options.permissionMode) {
+      component.loadRefs(element, {
+        editableComponent: 'single',
+        readonlyComponent: 'single',
+        hiddenComponent: 'single',
+      });
+
+      if (component.refs.editableComponent) {
+        this.attachTooltip(component.refs.editableComponent, this.t('Editable'));
+
+        component.addEventListener(component.refs.editableComponent, 'click', () => {
+          console.log('Editable config')
+        });
+      }
+
+      if (component.refs.readonlyComponent) {
+        this.attachTooltip(component.refs.readonlyComponent, this.t('Readonly'));
+
+        component.addEventListener(component.refs.readonlyComponent, 'click', () => {
+          console.log('Readonly config')
+          this.readonlyComponent(component.schema, parent, component.component, component)
+        });
+      }
+
+      if (component.refs.hiddenComponent) {
+        this.attachTooltip(component.refs.hiddenComponent, this.t('Hidden'));
+
+        component.addEventListener(component.refs.hiddenComponent, 'click', () => {
+          console.log('Hidden config')
+        });
+      }
+    }
+
 
     if (component.refs.copyComponent) {
       this.attachTooltip(component.refs.copyComponent, this.t('Copy'));
@@ -654,7 +690,7 @@ export default class WebformBuilder extends Component {
           margin: 20,
           maxSpeed: 6,
           scrollWhenOutside: true,
-          autoScroll: function() {
+          autoScroll: function () {
             return this.down && drake?.dragging;
           }
         });
@@ -1750,6 +1786,13 @@ export default class WebformBuilder extends Component {
     source.formioComponent.rebuild().then(() => {
       this.isComponentCreated = true;
     });
+  }
+
+  readonlyComponent(component, parent, original, componentInstance) {
+    console.log(component);
+    console.log(parent);
+    console.log(original);
+    console.log(componentInstance);
   }
 
   /**
