@@ -34,7 +34,7 @@ export default class WebformBuilder extends Component {
     options.permissionMode = options.permissionMode || false;
 
     super(null, options);
-    this.formPermission = {};
+    this.formPermission = options.formPermission || {};
 
     this.setElement(element);
     this.dragulaLib = dragula;
@@ -381,12 +381,12 @@ export default class WebformBuilder extends Component {
         readonlyComponent: 'single',
         hiddenComponent: 'single',
       });
+      const parent = this.getParentElement(element);
 
       // Load form permission
 
       if (component.refs.editableComponent) {
         this.attachTooltip(component.refs.editableComponent, this.t('Editable'));
-
         component.addEventListener(component.refs.editableComponent, 'click', () => {
           console.log('Editable config');
           this.editableComponent(component.schema, parent, component.component, component);
@@ -395,7 +395,6 @@ export default class WebformBuilder extends Component {
 
       if (component.refs.readonlyComponent) {
         this.attachTooltip(component.refs.readonlyComponent, this.t('Readonly'));
-        const parent = this.getParentElement(element);
         component.addEventListener(component.refs.readonlyComponent, 'click', () => {
           console.log('Readonly config');
           this.readonlyComponent(component.schema, parent, component.component, component);
@@ -410,6 +409,9 @@ export default class WebformBuilder extends Component {
           this.hiddenComponent(component.schema, parent, component.component, component);
         });
       }
+      parent.formioComponent.components.forEach(item => {
+        this.addClassFormPermission(item)
+      })
     }
 
     if (component.refs.copyComponent) {
@@ -809,10 +811,9 @@ export default class WebformBuilder extends Component {
     if (this.dragula) {
       this.dragula.destroy();
     }
-    if(this.options.permissionMode){
+    if (this.options.permissionMode) {
       return;
     }
-
 
     const containersArray = Array.prototype.slice.call(this.refs['sidebar-container']).filter(item => {
       return item.id !== 'group-container-resource';
@@ -1827,13 +1828,30 @@ export default class WebformBuilder extends Component {
   }
 
   hiddenChildComponent(component) {
-    component.element.classList.remove('readonly-component')
-    component.element.classList.add('hidden-component')
+    component.element.classList.remove('readonly-component');
+    component.element.classList.add('hidden-component');
     const classList = component.element.classList;
     _.assign(this.formPermission, { [component.key]: 'hidden' });
     if (component.components) {
       component.components.forEach((comp) => {
         this.hiddenChildComponent(comp);
+      })
+    }
+  }
+
+  addClassFormPermission(component) {
+    let componentKey = component.key;
+    if (this.formPermission[componentKey]) {
+      component.element?.classList.remove('readonly-component', 'hidden-component');
+      if (this.formPermission[componentKey] === 'readonly') {
+        component.element?.classList.add('readonly-component');
+      } else if (this.formPermission[componentKey] === 'hidden') {
+        component.element?.classList.add('hidden-component');
+      }
+    }
+    if (component.components) {
+      component.components.forEach((comp) => {
+        this.addClassFormPermission(comp);
       })
     }
   }
