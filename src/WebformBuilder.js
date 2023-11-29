@@ -34,6 +34,7 @@ export default class WebformBuilder extends Component {
     options.permissionMode = options.permissionMode || false;
 
     super(null, options);
+    this.formPermission = {};
 
     this.setElement(element);
     this.dragulaLib = dragula;
@@ -381,11 +382,14 @@ export default class WebformBuilder extends Component {
         hiddenComponent: 'single',
       });
 
+      // Load form permission
+
       if (component.refs.editableComponent) {
         this.attachTooltip(component.refs.editableComponent, this.t('Editable'));
 
         component.addEventListener(component.refs.editableComponent, 'click', () => {
           console.log('Editable config');
+          this.editableComponent(component.schema, parent, component.component, component);
         });
       }
 
@@ -403,6 +407,7 @@ export default class WebformBuilder extends Component {
 
         component.addEventListener(component.refs.hiddenComponent, 'click', () => {
           console.log('Hidden config');
+          this.hiddenComponent(component.schema, parent, component.component, component);
         });
       }
     }
@@ -589,6 +594,7 @@ export default class WebformBuilder extends Component {
         })),
       }),
       form: this.webform.render(),
+      permissionMode: this.options.permissionMode || false
     });
   }
 
@@ -800,10 +806,13 @@ export default class WebformBuilder extends Component {
 
   initDragula() {
     const options = this.options;
-
     if (this.dragula) {
       this.dragula.destroy();
     }
+    if(this.options.permissionMode){
+      return;
+    }
+
 
     const containersArray = Array.prototype.slice.call(this.refs['sidebar-container']).filter(item => {
       return item.id !== 'group-container-resource';
@@ -1788,10 +1797,69 @@ export default class WebformBuilder extends Component {
   }
 
   readonlyComponent(component, parent, original, componentInstance) {
-    console.log(component);
-    console.log(parent);
-    console.log(original);
-    console.log(componentInstance);
+    let parentKey = parent.formioComponent.component.key;
+    if (parentKey in this.formPermission && this.formPermission[parentKey] === 'hidden') {
+      window.alert('This part is hidden')
+      return
+    }
+    const comp = parent.formioComponent.components.find((comp) => comp.id === componentInstance.id);
+    this.readonlyChildComponent(comp);
+  }
+
+  readonlyChildComponent(component) {
+    component.element.classList.remove('hidden-component')
+    component.element.classList.add('readonly-component')
+    const snap = _.get(this.formPermission, component.key)
+    _.assign(this.formPermission, { [component.key]: 'readonly' });
+    if (component.components) {
+      component.components.forEach((comp) => {
+        if (comp.key in this.formPermission && this.formPermission[comp.key] !== snap) {
+          return
+        }
+        this.readonlyChildComponent(comp);
+      })
+    }
+  }
+
+  hiddenComponent(component, parent, original, componentInstance) {
+    const comp = parent.formioComponent.components.find((comp) => comp.id === componentInstance.id);
+    this.hiddenChildComponent(comp);
+  }
+
+  hiddenChildComponent(component) {
+    component.element.classList.remove('readonly-component')
+    component.element.classList.add('hidden-component')
+    const classList = component.element.classList;
+    _.assign(this.formPermission, { [component.key]: 'hidden' });
+    if (component.components) {
+      component.components.forEach((comp) => {
+        this.hiddenChildComponent(comp);
+      })
+    }
+  }
+
+  editableComponent(component, parent, original, componentInstance) {
+    let parentKey = parent.formioComponent.component.key;
+    if (parentKey in this.formPermission && this.formPermission[parentKey] === 'hidden') {
+      window.alert('This part is hidden')
+      return
+    }
+    const comp = parent.formioComponent.components.find((comp) => comp.id === componentInstance.id);
+    this.editableChildComponent(comp);
+  }
+
+  editableChildComponent(component) {
+    component.element.classList.remove('hidden-component', 'readonly-component')
+    const snap = _.get(this.formPermission, component.key)
+    this.formPermission = _.omit(this.formPermission, component.key)
+    if (component.components) {
+      component.components.forEach((comp) => {
+        if (comp.key in this.formPermission && this.formPermission[comp.key] !== snap) {
+          return
+        }
+        this.editableChildComponent(comp);
+      })
+    }
   }
 
   /**
