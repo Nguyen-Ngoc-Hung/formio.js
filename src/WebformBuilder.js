@@ -1805,6 +1805,7 @@ export default class WebformBuilder extends Component {
     }
     const comp = parent.formioComponent.components.find((comp) => comp.id === componentInstance.id);
     this.readonlyChildComponent(comp);
+    this.emit('updatePermission',this.formPermission);
   }
 
   readonlyChildComponent(component) {
@@ -1825,6 +1826,7 @@ export default class WebformBuilder extends Component {
   hiddenComponent(component, parent, original, componentInstance) {
     const comp = parent.formioComponent.components.find((comp) => comp.id === componentInstance.id);
     this.hiddenChildComponent(comp);
+    this.emit('updatePermission',this.formPermission);
   }
 
   hiddenChildComponent(component) {
@@ -1864,6 +1866,7 @@ export default class WebformBuilder extends Component {
     }
     const comp = parent.formioComponent.components.find((comp) => comp.id === componentInstance.id);
     this.editableChildComponent(comp);
+    this.emit('updatePermission',this.formPermission);
   }
 
   editableChildComponent(component) {
