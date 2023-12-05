@@ -1,6 +1,6 @@
 {
   "name": "formiojs-llq",
-  "version": "5.0.0-rc.27-10",
+  "version": "5.0.0-rc.27-12",
   "description": "JavaScript powered Forms with JSON Form Builder",
   "main": "lib/cjs/index.js",
   "exports": {
