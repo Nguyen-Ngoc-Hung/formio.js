@@ -1805,11 +1805,11 @@ export default class WebformBuilder extends Component {
     }
     const comp = parent.formioComponent.components.find((comp) => comp.id === componentInstance.id);
     this.readonlyChildComponent(comp);
-    this.emit('updatePermission',this.formPermission);
+    this.emit('updatePermission', this.formPermission);
   }
 
   readonlyChildComponent(component) {
-    component.element.classList.remove('hidden-component')
+    component.element.classList.remove('hidden-component', 'editable-component')
     component.element.classList.add('readonly-component')
     const snap = _.get(this.formPermission, component.key)
     _.assign(this.formPermission, { [component.key]: 'readonly' });
@@ -1826,11 +1826,11 @@ export default class WebformBuilder extends Component {
   hiddenComponent(component, parent, original, componentInstance) {
     const comp = parent.formioComponent.components.find((comp) => comp.id === componentInstance.id);
     this.hiddenChildComponent(comp);
-    this.emit('updatePermission',this.formPermission);
+    this.emit('updatePermission', this.formPermission);
   }
 
   hiddenChildComponent(component) {
-    component.element.classList.remove('readonly-component');
+    component.element.classList.remove('readonly-component', 'editable-component');
     component.element.classList.add('hidden-component');
     const classList = component.element.classList;
     _.assign(this.formPermission, { [component.key]: 'hidden' });
@@ -1844,12 +1844,14 @@ export default class WebformBuilder extends Component {
   addClassFormPermission(component) {
     let componentKey = component.key;
     if (this.formPermission[componentKey]) {
-      component.element?.classList.remove('readonly-component', 'hidden-component');
+      component.element?.classList.remove('readonly-component', 'hidden-component', 'editable-component');
       if (this.formPermission[componentKey] === 'readonly') {
         component.element?.classList.add('readonly-component');
       } else if (this.formPermission[componentKey] === 'hidden') {
         component.element?.classList.add('hidden-component');
       }
+    } else {
+      component.element?.classList.add('editable-component');
     }
     if (component.components) {
       component.components.forEach((comp) => {
@@ -1866,11 +1868,12 @@ export default class WebformBuilder extends Component {
     }
     const comp = parent.formioComponent.components.find((comp) => comp.id === componentInstance.id);
     this.editableChildComponent(comp);
-    this.emit('updatePermission',this.formPermission);
+    this.emit('updatePermission', this.formPermission);
   }
 
   editableChildComponent(component) {
     component.element.classList.remove('hidden-component', 'readonly-component')
+    component.element.classList.add('editable-component')
     const snap = _.get(this.formPermission, component.key)
     this.formPermission = _.omit(this.formPermission, component.key)
     if (component.components) {
