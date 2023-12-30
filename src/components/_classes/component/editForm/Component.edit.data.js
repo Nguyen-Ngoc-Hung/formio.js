@@ -15,7 +15,7 @@ export default [
     key: 'defaultValue',
     weight: 5,
     placeholder: 'Default Value',
-    tooltip: 'The Default Value will be the value for this field, before user interaction. Having a default value will override the placeholder text.',
+    tooltip: 'The Default Value (or enter the \'$\' character to use the values in the system) will be the value for this field, before user interaction. Having a default value will override the placeholder text.',
     input: true
   },
   {
