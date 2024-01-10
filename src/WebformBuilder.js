@@ -1217,48 +1217,62 @@ export default class WebformBuilder extends Component {
       );
 
       if (!defaultChanged) {
-        // _.assign(defaultValueComponent.component, _.omit({ ...component }, [
-        //   'key',
-        //   'label',
-        //   'labelPosition',
-        //   'labelMargin',
-        //   'labelWidth',
-        //   'placeholder',
-        //   'tooltip',
-        //   'hidden',
-        //   'autofocus',
-        //   'validate',
-        //   'disabled',
-        //   'defaultValue',
-        //   'customDefaultValue',
-        //   'calculateValue',
-        //   'conditional',
-        //   'customConditional',
-        //   'id'
-        // ]));
-        // const parentComponent = defaultValueComponent.parent;
-        // let tabIndex = -1;
-        // let index = -1;
-        // parentComponent.tabs.some((tab, tIndex) => {
-        //   tab.some((comp, compIndex) => {
-        //     if (comp.id === defaultValueComponent.id) {
-        //       tabIndex = tIndex;
-        //       index = compIndex;
-        //       return true;
-        //     }
-        //     return false;
-        //   });
-        // });
+        _.assign(defaultValueComponent.component, _.omit({ ...component }, [
+          'key',
+          'label',
+          'labelPosition',
+          'labelMargin',
+          'labelWidth',
+          'placeholder',
+          'tooltip',
+          'hidden',
+          'autofocus',
+          'validate',
+          'disabled',
+          'defaultValue',
+          'customDefaultValue',
+          'calculateValue',
+          'conditional',
+          'customConditional',
+          'id'
+        ]));
+        const parentComponent = defaultValueComponent.parent;
+        let tabIndex = -1;
+        let index = -1;
+        parentComponent.tabs.some((tab, tIndex) => {
+          tab.some((comp, compIndex) => {
+            if (comp.id === defaultValueComponent.id) {
+              tabIndex = tIndex;
+              index = compIndex;
+              return true;
+            }
+            return false;
+          });
+        });
 
-        // if (tabIndex !== -1 && index !== -1 && changed && !_.isNil(changed.value)) {
-        //   const sibling = parentComponent.tabs[tabIndex][index + 1];
-        //   parentComponent.removeComponent(defaultValueComponent);
-        //   const newComp = parentComponent.addComponent(defaultValueComponent.component, defaultValueComponent.data, sibling);
-        //   _.pull(newComp.validators, 'required');
-        //   parentComponent.tabs[tabIndex].splice(index, 1, newComp);
-        //   newComp.checkValidity = () => true;
-        //   newComp.build(defaultValueComponent.element);
-        // }
+        if (tabIndex !== -1 && index !== -1 && changed && !_.isNil(changed.value)) {
+          if (defaultValueComponent.component.type === 'textfield' || defaultValueComponent.component.type === 'textarea') {
+            let inputElement = defaultValueComponent.element.querySelector('input[type="text"][name="data[defaultValue]"], textarea[name="data[defaultValue]"]');
+            var myMention = new Mention({
+              input: inputElement,
+              options: [
+                { id: 1, name: '{user_name}', description: 'Tên người dùng' },
+                { id: 2, name: '{user_code}', description: 'Mã người dùng' },
+                { id: 3, name: '{user_position}', description: 'Chức vụ' }
+              ],
+              symbol: '$'
+            })
+            return;
+          } else {
+            const sibling = parentComponent.tabs[tabIndex][index + 1];
+            parentComponent.removeComponent(defaultValueComponent);
+            const newComp = parentComponent.addComponent(defaultValueComponent.component, defaultValueComponent.data, sibling);
+            _.pull(newComp.validators, 'required');
+            parentComponent.tabs[tabIndex].splice(index, 1, newComp);
+            newComp.checkValidity = () => true;
+            newComp.build(defaultValueComponent.element);
+          }
+        }
       }
       else {
         let dataPath = changed.instance._data.key;
@@ -1577,31 +1591,6 @@ export default class WebformBuilder extends Component {
     }));
 
     this.dialog = this.createModal(this.componentEdit, _.get(this.options, 'dialogAttr', {}));
-    debugger
-    // let allInput = this.dialog.querySelectorAll('input[type="text"][name="data[defaultValue]"]');
-    let allInput = this.dialog.querySelectorAll('input[type="text"][name="data[defaultValue]"], textarea[name="data[defaultValue]"]');
-    allInput.forEach(element => {
-      var myMention = new Mention({
-        input: element,
-        options: [
-          { id: 1, name: '{user_name}', description: 'Tên người dùng' },
-          { id: 2, name: '{user_code}', description: 'Mã người dùng' },
-          { id: 3, name: '{user_position}', description: 'Chức vụ' }
-        ],
-        symbol: '$'
-      })
-    });
-    // for (let index = 0; index < allInput.length; index++) {
-    //   var myMention = new Mention({
-    //     input: allInput[index],
-    //     options: [
-    //       { id: 1, name: 'CURRENT_USER', description: 'Wideeye Potion' },
-    //       { id: 2, name: 'ADMIN_USER', description: 'Felix Felicis' },
-    //       { id: 3, name: 'ROOT_USER', description: 'Polyjuice Potion' }
-    //     ],
-    //     symbol: '$'
-    //   })
-    // }
     // This is the attach step.
     this.editForm.attach(this.componentEdit.querySelector('[ref="editForm"]'));
 

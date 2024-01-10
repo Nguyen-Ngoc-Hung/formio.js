@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./dist/formio.full.js"></script>
+    <link rel="stylesheet" href="https://cdn.form.io/formiojs/formio.full.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <div class="container">
+        <div id="builder"></div>
+    </div>
+    <!-- <button id="submitButton">Gui</button> -->
+    <script type="module">
+        const nestedForm = { "components": [{ "label": "Text Field", "key": "textField", "labelPosition": "top", "placeholder": "", "description": "", "tooltip": "", "prefix": "", "suffix": "", "widget": { "type": "input" }, "inputMask": "", "displayMask": "", "applyMaskOn": "change", "allowMultipleMasks": false, "customClass": "", "tabindex": "", "autocomplete": "", "hidden": true, "hideLabel": false, "showWordCount": false, "showCharCount": false, "mask": false, "autofocus": false, "spellcheck": true, "disabled": true, "tableView": true, "modalEdit": false, "multiple": false, "persistent": true, "inputFormat": "plain", "protected": false, "dbIndex": false, "case": "", "truncateMultipleSpaces": false, "encrypted": false, "redrawOn": "", "clearOnHide": true, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "allowCalculateOverride": false, "validateOn": "change", "validate": { "required": false, "pattern": "", "customMessage": "", "custom": "", "customPrivate": false, "json": "", "minLength": "", "maxLength": "", "strictDateValidation": false, "multiple": false, "unique": false }, "unique": false, "errorLabel": "", "errors": "", "conditional": { "show": null, "when": null, "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "textfield", "input": true, "refreshOn": "", "dataGridLabel": false, "properties": {}, "addons": [], "inputType": "text", "id": "e6nt92", "defaultValue": null }, { "label": "Columns", "key": "columns", "columns": [{ "components": [{ "label": "Text Field", "key": "textField1", "labelPosition": "top", "placeholder": "", "description": "", "tooltip": "", "prefix": "", "suffix": "", "widget": { "type": "input" }, "inputMask": "", "displayMask": "", "applyMaskOn": "change", "allowMultipleMasks": false, "customClass": "", "tabindex": "", "autocomplete": "", "hidden": false, "hideLabel": false, "showWordCount": false, "showCharCount": false, "mask": false, "autofocus": false, "spellcheck": true, "disabled": false, "tableView": true, "modalEdit": false, "multiple": false, "persistent": true, "inputFormat": "plain", "protected": false, "dbIndex": false, "case": "", "truncateMultipleSpaces": false, "encrypted": false, "redrawOn": "", "clearOnHide": true, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "allowCalculateOverride": false, "validateOn": "change", "validate": { "required": false, "pattern": "", "customMessage": "", "custom": "", "customPrivate": false, "json": "", "minLength": "", "maxLength": "", "strictDateValidation": false, "multiple": false, "unique": false }, "unique": false, "errorLabel": "", "errors": "", "conditional": { "show": null, "when": null, "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "textfield", "input": true, "refreshOn": "", "dataGridLabel": false, "properties": {}, "addons": [], "inputType": "text", "id": "el4l64", "defaultValue": null }], "width": 6, "offset": 0, "push": 0, "pull": 0, "size": "md", "currentWidth": 6 }, { "components": [{ "label": "Text Field", "key": "textField2", "labelPosition": "top", "placeholder": "", "description": "", "tooltip": "", "prefix": "", "suffix": "", "widget": { "type": "input" }, "inputMask": "", "displayMask": "", "applyMaskOn": "change", "allowMultipleMasks": false, "customClass": "", "tabindex": "", "autocomplete": "", "hidden": false, "hideLabel": false, "showWordCount": false, "showCharCount": false, "mask": false, "autofocus": false, "spellcheck": true, "disabled": false, "tableView": true, "modalEdit": false, "multiple": false, "persistent": true, "inputFormat": "plain", "protected": false, "dbIndex": false, "case": "", "truncateMultipleSpaces": false, "encrypted": false, "redrawOn": "", "clearOnHide": true, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "allowCalculateOverride": false, "validateOn": "change", "validate": { "required": false, "pattern": "", "customMessage": "", "custom": "", "customPrivate": false, "json": "", "minLength": "", "maxLength": "", "strictDateValidation": false, "multiple": false, "unique": false }, "unique": false, "errorLabel": "", "errors": "", "conditional": { "show": null, "when": null, "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "textfield", "input": true, "refreshOn": "", "dataGridLabel": false, "properties": {}, "addons": [], "inputType": "text", "id": "e1w6uu9", "defaultValue": null }, { "label": "Columns", "key": "columns1", "columns": [{ "components": [{ "input": true, "key": "textField4", "placeholder": "", "prefix": "", "customClass": "", "suffix": "", "multiple": false, "defaultValue": null, "protected": false, "unique": false, "persistent": true, "hidden": false, "clearOnHide": true, "refreshOn": "", "redrawOn": "", "tableView": true, "modalEdit": false, "label": "Text Field", "dataGridLabel": false, "labelPosition": "top", "description": "", "errorLabel": "", "tooltip": "", "hideLabel": false, "tabindex": "", "disabled": false, "autofocus": false, "dbIndex": false, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "widget": { "type": "input" }, "attributes": {}, "validateOn": "change", "validate": { "required": false, "custom": "", "customPrivate": false, "strictDateValidation": false, "multiple": false, "unique": false, "minLength": "", "maxLength": "", "pattern": "" }, "conditional": { "show": null, "when": null, "eq": "" }, "overlay": { "style": "", "left": "", "top": "", "width": "", "height": "" }, "allowCalculateOverride": false, "encrypted": false, "showCharCount": false, "showWordCount": false, "properties": {}, "allowMultipleMasks": false, "addons": [], "type": "textfield", "mask": false, "inputType": "text", "inputFormat": "plain", "inputMask": "", "displayMask": "", "spellcheck": true, "truncateMultipleSpaces": false, "id": "ew5qe2n" }, { "label": "Columns", "key": "columns2", "columns": [{ "components": [{ "label": "Text Field", "key": "textField6", "labelPosition": "top", "placeholder": "", "description": "", "tooltip": "", "prefix": "", "suffix": "", "widget": { "type": "input" }, "inputMask": "", "displayMask": "", "applyMaskOn": "change", "allowMultipleMasks": false, "customClass": "", "tabindex": "", "autocomplete": "", "hidden": false, "hideLabel": false, "showWordCount": false, "showCharCount": false, "mask": false, "autofocus": false, "spellcheck": true, "disabled": false, "tableView": true, "modalEdit": false, "multiple": false, "persistent": true, "inputFormat": "plain", "protected": false, "dbIndex": false, "case": "", "truncateMultipleSpaces": false, "encrypted": false, "redrawOn": "", "clearOnHide": true, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "allowCalculateOverride": false, "validateOn": "change", "validate": { "required": false, "pattern": "", "customMessage": "", "custom": "", "customPrivate": false, "json": "", "minLength": "", "maxLength": "", "strictDateValidation": false, "multiple": false, "unique": false }, "unique": false, "errorLabel": "", "errors": "", "conditional": { "show": null, "when": null, "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "textfield", "input": true, "refreshOn": "", "dataGridLabel": false, "properties": {}, "addons": [], "inputType": "text", "id": "esld1cs", "defaultValue": null }], "width": 6, "offset": 0, "push": 0, "pull": 0, "size": "md", "currentWidth": 6 }, { "components": [{ "label": "Number", "key": "number", "labelPosition": "top", "placeholder": "", "description": "", "tooltip": "", "prefix": "", "suffix": "", "widget": { "type": "input" }, "displayMask": "", "applyMaskOn": "change", "customClass": "", "tabindex": "", "autocomplete": "", "hidden": false, "hideLabel": false, "mask": false, "autofocus": false, "disabled": false, "tableView": false, "modalEdit": false, "multiple": false, "persistent": true, "delimiter": false, "requireDecimal": false, "inputFormat": "plain", "protected": false, "dbIndex": false, "truncateMultipleSpaces": false, "encrypted": false, "redrawOn": "", "clearOnHide": true, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "allowCalculateOverride": false, "validateOn": "change", "validate": { "required": false, "customMessage": "", "custom": "", "customPrivate": false, "json": "", "min": "", "max": "", "strictDateValidation": false, "multiple": false, "unique": false, "step": "any", "integer": "" }, "errorLabel": "", "errors": "", "conditional": { "show": null, "when": null, "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "number", "input": true, "unique": false, "refreshOn": "", "dataGridLabel": false, "showCharCount": false, "showWordCount": false, "properties": {}, "allowMultipleMasks": false, "addons": [], "id": "e7yuiur", "defaultValue": null }], "width": 6, "offset": 0, "push": 0, "pull": 0, "size": "md", "currentWidth": 6 }], "autoAdjust": false, "customClass": "", "hidden": false, "modalEdit": false, "conditional": { "show": null, "when": null, "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "columns", "input": false, "placeholder": "", "prefix": "", "suffix": "", "multiple": false, "defaultValue": null, "protected": false, "unique": false, "persistent": false, "clearOnHide": false, "refreshOn": "", "redrawOn": "", "tableView": false, "dataGridLabel": false, "labelPosition": "top", "description": "", "errorLabel": "", "tooltip": "", "hideLabel": false, "tabindex": "", "disabled": false, "autofocus": false, "dbIndex": false, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "widget": null, "validateOn": "change", "validate": { "required": false, "custom": "", "customPrivate": false, "strictDateValidation": false, "multiple": false, "unique": false }, "allowCalculateOverride": false, "encrypted": false, "showCharCount": false, "showWordCount": false, "properties": {}, "allowMultipleMasks": false, "addons": [], "tree": false, "lazyLoad": false, "id": "e4xukl" }], "width": 6, "offset": 0, "push": 0, "pull": 0, "size": "md", "currentWidth": 6 }, { "components": [{ "label": "Text Field", "key": "textField5", "labelPosition": "top", "placeholder": "", "description": "", "tooltip": "", "prefix": "", "suffix": "", "widget": { "type": "input" }, "inputMask": "", "displayMask": "", "applyMaskOn": "change", "allowMultipleMasks": false, "customClass": "", "tabindex": "", "autocomplete": "", "hidden": false, "hideLabel": false, "showWordCount": false, "showCharCount": false, "mask": false, "autofocus": false, "spellcheck": true, "disabled": false, "tableView": true, "modalEdit": false, "multiple": false, "persistent": true, "inputFormat": "plain", "protected": false, "dbIndex": false, "case": "", "truncateMultipleSpaces": false, "encrypted": false, "redrawOn": "", "clearOnHide": true, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "allowCalculateOverride": false, "validateOn": "change", "validate": { "required": false, "pattern": "", "customMessage": "", "custom": "", "customPrivate": false, "json": "", "minLength": "", "maxLength": "", "strictDateValidation": false, "multiple": false, "unique": false }, "unique": false, "errorLabel": "", "errors": "", "conditional": { "show": null, "when": null, "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "textfield", "input": true, "refreshOn": "", "dataGridLabel": false, "properties": {}, "addons": [], "inputType": "text", "id": "eeh42y3", "defaultValue": null }], "width": 6, "offset": 0, "push": 0, "pull": 0, "size": "md", "currentWidth": 6 }], "autoAdjust": false, "customClass": "", "hidden": false, "modalEdit": false, "conditional": { "show": null, "when": null, "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "columns", "input": false, "placeholder": "", "prefix": "", "suffix": "", "multiple": false, "defaultValue": null, "protected": false, "unique": false, "persistent": false, "clearOnHide": false, "refreshOn": "", "redrawOn": "", "tableView": false, "dataGridLabel": false, "labelPosition": "top", "description": "", "errorLabel": "", "tooltip": "", "hideLabel": false, "tabindex": "", "disabled": false, "autofocus": false, "dbIndex": false, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "widget": null, "validateOn": "change", "validate": { "required": false, "custom": "", "customPrivate": false, "strictDateValidation": false, "multiple": false, "unique": false }, "allowCalculateOverride": false, "encrypted": false, "showCharCount": false, "showWordCount": false, "properties": {}, "allowMultipleMasks": false, "addons": [], "tree": false, "lazyLoad": false, "id": "eyxi4n" }], "width": 6, "offset": 0, "push": 0, "pull": 0, "size": "md", "currentWidth": 6 }], "autoAdjust": false, "customClass": "", "hidden": false, "modalEdit": false, "conditional": { "show": "", "when": "", "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "columns", "input": false, "placeholder": "", "prefix": "", "suffix": "", "multiple": false, "defaultValue": null, "protected": false, "unique": false, "persistent": false, "clearOnHide": false, "refreshOn": "", "redrawOn": "", "tableView": false, "dataGridLabel": false, "labelPosition": "top", "description": "", "errorLabel": "", "tooltip": "", "hideLabel": false, "tabindex": "", "disabled": false, "autofocus": false, "dbIndex": false, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "widget": null, "validateOn": "change", "validate": { "required": false, "custom": "", "customPrivate": false, "strictDateValidation": false, "multiple": false, "unique": false }, "allowCalculateOverride": false, "encrypted": false, "showCharCount": false, "showWordCount": false, "properties": {}, "allowMultipleMasks": false, "addons": [], "tree": false, "lazyLoad": false, "id": "ecjmd9" }, { "label": "Text Field", "key": "textField3", "labelPosition": "top", "placeholder": "", "description": "", "tooltip": "", "prefix": "", "suffix": "", "widget": { "type": "input" }, "inputMask": "", "displayMask": "", "applyMaskOn": "change", "allowMultipleMasks": false, "customClass": "", "tabindex": "", "autocomplete": "", "hidden": false, "hideLabel": false, "showWordCount": false, "showCharCount": false, "mask": false, "autofocus": false, "spellcheck": true, "disabled": false, "tableView": true, "modalEdit": false, "multiple": false, "persistent": true, "inputFormat": "plain", "protected": false, "dbIndex": false, "case": "", "truncateMultipleSpaces": false, "encrypted": false, "redrawOn": "", "clearOnHide": true, "customDefaultValue": "", "calculateValue": "", "calculateServer": false, "allowCalculateOverride": false, "validateOn": "change", "validate": { "required": false, "pattern": "", "customMessage": "", "custom": "", "customPrivate": false, "json": "", "minLength": "", "maxLength": "", "strictDateValidation": false, "multiple": false, "unique": false }, "unique": false, "errorLabel": "", "errors": "", "conditional": { "show": null, "when": null, "eq": "", "json": "" }, "customConditional": "", "logic": [], "attributes": {}, "overlay": { "style": "", "page": "", "left": "", "top": "", "width": "", "height": "" }, "type": "textfield", "input": true, "refreshOn": "", "dataGridLabel": false, "properties": {}, "addons": [], "inputType": "text", "id": "e34e1ku", "defaultValue": null }] }
+        const displayForm = {
+            "components": [
+                {
+                    "collapsible": false,
+                    "key": "panel",
+                    "type": "panel",
+                    "label": "Panel",
+                    "input": false,
+                    "tableView": false,
+                    "components": [
+                        {
+                            "label": "Text Field",
+                            "applyMaskOn": "change",
+                            "tableView": true,
+                            "key": "textField",
+                            "type": "textfield",
+                            "input": true
+                        }
+                    ]
+                },
+                {
+                    "label": "Tabs",
+                    "components": [
+                        {
+                            "label": "Hành chính",
+                            "key": "tab1",
+                            "components": [
+                                {
+                                    "label": "Text Field",
+                                    "applyMaskOn": "change",
+                                    "tableView": true,
+                                    "key": "textField1",
+                                    "type": "textfield",
+                                    "input": true
+                                },
+                                {
+                                    "label": "Text Area",
+                                    "applyMaskOn": "change",
+                                    "autoExpand": false,
+                                    "tableView": true,
+                                    "key": "textArea1",
+                                    "type": "textarea",
+                                    "input": true
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Nhân sự",
+                            "key": "tab2",
+                            "components": [
+                                {
+                                    "label": "Text Field",
+                                    "applyMaskOn": "change",
+                                    "tableView": true,
+                                    "key": "textField2",
+                                    "type": "textfield",
+                                    "input": true
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Kế toán",
+                            "key": "tab3",
+                            "components": [
+                                {
+                                    "label": "Text Area",
+                                    "applyMaskOn": "change",
+                                    "autoExpand": false,
+                                    "tableView": true,
+                                    "key": "textArea",
+                                    "type": "textarea",
+                                    "input": true
+                                }
+                            ]
+                        }
+                    ],
+                    "key": "tabs",
+                    "type": "tabs",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "label": "Tabs",
+                    "components": [
+                        {
+                            "label": "Hành chính",
+                            "key": "tab4",
+                            "components": [
+                                {
+                                    "label": "Text Field",
+                                    "applyMaskOn": "change",
+                                    "tableView": true,
+                                    "key": "textField3",
+                                    "type": "textfield",
+                                    "input": true
+                                },
+                                {
+                                    "label": "Text Area",
+                                    "applyMaskOn": "change",
+                                    "autoExpand": false,
+                                    "tableView": true,
+                                    "key": "textArea2",
+                                    "type": "textarea",
+                                    "input": true
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Nhân sự",
+                            "key": "tab5",
+                            "components": [
+                                {
+                                    "label": "Text Field",
+                                    "applyMaskOn": "change",
+                                    "tableView": true,
+                                    "key": "textField4",
+                                    "type": "textfield",
+                                    "input": true
+                                },
+                                {
+                                    "label": "Text Area",
+                                    "applyMaskOn": "change",
+                                    "autoExpand": false,
+                                    "tableView": true,
+                                    "key": "textArea3",
+                                    "type": "textarea",
+                                    "input": true
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Kế toán",
+                            "key": "tab6",
+                            "components": [
+                                {
+                                    "label": "Password",
+                                    "applyMaskOn": "change",
+                                    "tableView": false,
+                                    "key": "password",
+                                    "type": "password",
+                                    "input": true,
+                                    "protected": true
+                                }
+                            ]
+                        }
+                    ],
+                    "verticalLayout": true,
+                    "key": "tabs1",
+                    "type": "tabs",
+                    "input": false,
+                    "tableView": false
+                }
+            ]
+        }
+        const displayWizard = {
+            "display": "wizard",
+            "settings": {
+                "pdf": {
+                    "id": "1ec0f8ee-6685-5d98-a847-26f67b67d6f0",
+                    "src": "https://files.form.io/pdf/5692b91fd1028f01000407e3/file/1ec0f8ee-6685-5d98-a847-26f67b67d6f0"
+                }
+            },
+            "components": [
+                {
+                    "title": "Page 1",
+                    "label": "Page 1",
+                    "type": "panel",
+                    "key": "page1",
+                    "components": [
+                        {
+                            "label": "Text Field",
+                            "applyMaskOn": "change",
+                            "tableView": true,
+                            "key": "textField",
+                            "type": "textfield",
+                            "input": true
+                        },
+                        {
+                            "label": "Text Area",
+                            "applyMaskOn": "change",
+                            "autoExpand": false,
+                            "tableView": true,
+                            "key": "textArea",
+                            "type": "textarea",
+                            "input": true
+                        }
+                    ],
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "title": "Page 2",
+                    "label": "Page 2",
+                    "type": "panel",
+                    "key": "page2",
+                    "components": [
+                        {
+                            "label": "Text Field",
+                            "applyMaskOn": "change",
+                            "tableView": true,
+                            "key": "textField1",
+                            "type": "textfield",
+                            "input": true
+                        },
+                        {
+                            "label": "Text Area",
+                            "applyMaskOn": "change",
+                            "autoExpand": false,
+                            "tableView": true,
+                            "key": "textArea1",
+                            "type": "textarea",
+                            "input": true
+                        }
+                    ],
+                    "input": false,
+                    "tableView": false
+                }
+            ]
+        }
+        // console.log(typeof Builders)
+        // const webform = Formio.Builders.getBuilder('webform')
+        // const descriptor = Object.getOwnPropertyDescriptor(webform.prototype, "updateComponentKey");
+        // descriptor.value = function (){
+        //     return "sayMyName";
+        // }
+        // Object.defineProperty(webform.prototype, "updateComponentKey", descriptor);
+        // console.dir(webform);
+        const b = Formio.builder(document.getElementById('builder'), nestedForm, {
+            language: 'vi', i18n: {
+                vi: {
+                    'Basic': 'Cơ bản',
+                    'Advanced': 'Nâng cao',
+                    'Display': 'Hiển thị',
+                    'Data': 'Dữ liệu',
+                    'Validation': 'Kiểm tra',
+                    'Conditional': 'Điều kiện',
+                    'Layout': 'Bố cục',
+                    'Preview': 'Xem trước',
+                    'Label': 'Tên',
+                    'Key of component': 'Định danh',
+                    'Label Position': 'Vị trí nhãn',
+                    'Description': 'Mô tả',
+                    'Tooltip': 'Hướng dẫn',
+                    'Save': 'Lưu',
+                    'Cancel': 'Hủy',
+                    'Remove': 'Loại bỏ',
+                },
+            },
+        }).then(function (builder) {
+            builder.on('saveComponent', function () {
+                console.log(builder.schema);
+            });
+        });
+    </script>
+</body>
+
+</html>
